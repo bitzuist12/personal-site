@@ -5,7 +5,7 @@ interface Props {
 }
 
 const { title = 'Ata Onat', description = 'Thoughts on history, culture, and startups.' } = Astro.props;
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 
 <!doctype html>
