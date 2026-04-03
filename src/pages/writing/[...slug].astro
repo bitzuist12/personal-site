@@ -1,0 +1,58 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('writing');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+function formatDate(dateStr: string) {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+}
+---
+
+<Base title={`${post.data.title} — Ata Onat`} description={post.data.description}>
+  <article>
+    <header>
+      <h1>{post.data.title}</h1>
+      <p class="date">{formatDate(post.data.date)}</p>
+    </header>
+    <div class="prose">
+      <Content />
+    </div>
+    <p class="back"><a href="/writing">&larr; All writing</a></p>
+  </article>
+</Base>
+
+<style>
+  header {
+    margin-bottom: 2rem;
+  }
+
+  header h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  .back {
+    margin-top: 3rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+  }
+
+  .back a {
+    color: #666;
+    text-decoration: none;
+  }
+
+  .back a:hover {
+    color: #1a1a1a;
+  }
+</style>

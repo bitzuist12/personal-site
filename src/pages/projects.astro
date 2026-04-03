@@ -1,0 +1,70 @@
+---
+import Base from '../layouts/Base.astro';
+
+const projects = [
+  {
+    name: 'AnalystAI',
+    description: 'AI-powered research and analysis platform. My current startup — building tools that help people think better with AI.',
+    url: 'https://analystai.co',
+  },
+  {
+    name: 'Simina Collective',
+    description: 'A hand-knit clothing brand I co-founded with my mom. Every piece is made by hand.',
+    url: 'https://siminacollective.com',
+  },
+];
+---
+
+<Base title="Projects — Ata Onat">
+  <h1>Projects</h1>
+  <p class="subtitle">Things I've built and am building.</p>
+
+  <ul class="project-list">
+    {projects.map((project) => (
+      <li>
+        <h2>
+          <a href={project.url} target="_blank">{project.name} &nearr;</a>
+        </h2>
+        <p>{project.description}</p>
+      </li>
+    ))}
+  </ul>
+</Base>
+
+<style>
+  .subtitle {
+    color: #666;
+    margin-bottom: 2.5rem;
+    font-size: 1.05rem;
+  }
+
+  .project-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .project-list li {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .project-list h2 {
+    font-size: 1.2rem;
+    margin: 0 0 0.4rem 0;
+  }
+
+  .project-list h2 a {
+    text-decoration: none;
+  }
+
+  .project-list h2 a:hover {
+    text-decoration: underline;
+    text-decoration-color: #ccc;
+  }
+
+  .project-list p {
+    color: #555;
+    font-size: 1rem;
+    margin: 0;
+  }
+</style>

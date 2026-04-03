@@ -1,0 +1,88 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Ata Onat">
+  <section class="intro">
+    <h1>Hi, I'm Ata.</h1>
+    <p>
+      I build things and write about what interests me — mostly history, culture, and startups.
+      Based in the space between building and thinking.
+    </p>
+    <p>
+      Currently working on <a href="https://analystai.co" target="_blank">AnalystAI</a>,
+      an AI startup. Previously co-founded
+      <a href="https://siminacollective.com" target="_blank">Simina Collective</a>,
+      a hand-knit clothing brand, with my mom.
+    </p>
+  </section>
+
+  <section class="recent">
+    <h2>Recent writing</h2>
+    <ul class="article-list">
+      <li>
+        <a href="/writing/why-i-write">Why I Write</a>
+        <span class="date">Apr 2026</span>
+      </li>
+    </ul>
+    <p class="more"><a href="/writing">All writing &rarr;</a></p>
+  </section>
+</Base>
+
+<style>
+  .intro {
+    margin-bottom: 3rem;
+  }
+
+  .intro p {
+    color: #444;
+  }
+
+  .recent h2 {
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #999;
+    margin-bottom: 1rem;
+  }
+
+  .article-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .article-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .article-list a {
+    font-size: 1.1rem;
+    text-decoration: none;
+  }
+
+  .article-list a:hover {
+    text-decoration: underline;
+    text-decoration-color: #ccc;
+  }
+
+  .more {
+    margin-top: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+  }
+
+  .more a {
+    color: #666;
+    text-decoration: none;
+  }
+
+  .more a:hover {
+    color: #1a1a1a;
+  }
+</style>
