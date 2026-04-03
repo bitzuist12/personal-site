@@ -6,20 +6,44 @@ import Base from '../layouts/Base.astro';
   <section class="intro">
     <h1>Hi, I'm Ata.</h1>
     <p>
-      I build things and write about what interests me — mostly history, culture, and startups.
-      Based in the space between building and thinking.
+      I spent years in private equity — first in New York, then in Vietnam, then investing across
+      emerging and developed markets for a fund based in Singapore. I liked the realism of investing,
+      but I always had this side of me that wanted to build something and be a little unrealistic.
     </p>
     <p>
-      Currently working on <a href="https://analystai.co" target="_blank">AnalystAI</a>,
-      an AI startup. Previously co-founded
+      Now I'm doing that. Currently building <a href="https://analystai.co" target="_blank">AnalystAI</a>,
+      an AI startup. I also co-founded
       <a href="https://siminacollective.com" target="_blank">Simina Collective</a>,
       a hand-knit clothing brand, with my mom.
+    </p>
+    <p>
+      I write about history, culture, startups, investing, and whatever else is on my mind.
     </p>
   </section>
 
   <section class="recent">
     <h2>Recent writing</h2>
     <ul class="article-list">
+      <li>
+        <a href="/writing/capital-is-not-conviction">Capital Is Not Conviction</a>
+        <span class="date">Apr 2026</span>
+      </li>
+      <li>
+        <a href="/writing/the-organizing-instinct">The Organizing Instinct</a>
+        <span class="date">Apr 2026</span>
+      </li>
+      <li>
+        <a href="/writing/investors-should-play-with-ai">If You're an Investor, You Should Play with AI</a>
+        <span class="date">Apr 2026</span>
+      </li>
+      <li>
+        <a href="/writing/the-efficiency-paradox">The Efficiency Paradox</a>
+        <span class="date">Apr 2026</span>
+      </li>
+      <li>
+        <a href="/writing/coconut-kingdom-and-the-branding-problem">The Coconut Kingdom and the Branding Problem</a>
+        <span class="date">Apr 2026</span>
+      </li>
       <li>
         <a href="/writing/why-i-write">Why I Write</a>
         <span class="date">Apr 2026</span>
@@ -57,6 +81,7 @@ import Base from '../layouts/Base.astro';
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+    gap: 1rem;
     padding: 0.6rem 0;
     border-bottom: 1px solid #eee;
   }
@@ -69,6 +94,13 @@ import Base from '../layouts/Base.astro';
   .article-list a:hover {
     text-decoration: underline;
     text-decoration-color: #ccc;
+  }
+
+  @media (max-width: 480px) {
+    .article-list li {
+      flex-direction: column;
+      gap: 0.2rem;
+    }
   }
 
   .more {
