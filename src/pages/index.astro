@@ -1,5 +1,16 @@
 ---
 import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const base = import.meta.env.BASE_URL;
+const posts = (await getCollection('writing')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+function formatDate(dateStr: string) {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+}
 ---
 
 <Base title="Ata Onat">
@@ -12,8 +23,9 @@ import Base from '../layouts/Base.astro';
     </p>
     <p>
       Now I'm doing that. Currently building <a href="https://analystai.co" target="_blank">AnalystAI</a>,
-      an AI startup. I also co-founded
-      <a href="https://siminacollective.com" target="_blank">Simina Collective</a>,
+      AI analysts for alternative asset managers. I also run M&A advisory under
+      <a href="https://gacapital.co" target="_blank">GA Capital</a>, combining AI with traditional advisory.
+      And I co-founded <a href="https://smyrnacollective.com" target="_blank">Smyrna Collective</a>,
       a hand-knit clothing brand, with my mom.
     </p>
     <p>
@@ -24,40 +36,13 @@ import Base from '../layouts/Base.astro';
   <section class="recent">
     <h2>Recent writing</h2>
     <ul class="article-list">
-      <li>
-        <a href="/writing/the-token-dependency">The Token Dependency</a>
-        <span class="date">Apr 2026</span>
-      </li>
-      <li>
-        <a href="/writing/crisis-is-the-catalyst">Crisis Is the Catalyst</a>
-        <span class="date">Apr 2026</span>
-      </li>
-      <li>
-        <a href="/writing/capital-is-not-conviction">Capital Is Not Conviction</a>
-        <span class="date">Apr 2026</span>
-      </li>
-      <li>
-        <a href="/writing/the-organizing-instinct">The Organizing Instinct</a>
-        <span class="date">Apr 2026</span>
-      </li>
-      <li>
-        <a href="/writing/investors-should-play-with-ai">If You're an Investor, You Should Play with AI</a>
-        <span class="date">Apr 2026</span>
-      </li>
-      <li>
-        <a href="/writing/the-efficiency-paradox">The Efficiency Paradox</a>
-        <span class="date">Apr 2026</span>
-      </li>
-      <li>
-        <a href="/writing/coconut-kingdom-and-the-branding-problem">The Coconut Kingdom and the Branding Problem</a>
-        <span class="date">Apr 2026</span>
-      </li>
-      <li>
-        <a href="/writing/why-i-write">Why I Write</a>
-        <span class="date">Apr 2026</span>
-      </li>
+      {posts.map((post) => (
+        <li>
+          <a href={`${base}writing/${post.id}`}>{post.data.title}</a>
+          <span class="date">{formatDate(post.data.date)}</span>
+        </li>
+      ))}
     </ul>
-    <p class="more"><a href="/writing">All writing &rarr;</a></p>
   </section>
 </Base>
 
@@ -109,20 +94,5 @@ import Base from '../layouts/Base.astro';
       flex-direction: column;
       gap: 0.2rem;
     }
-  }
-
-  .more {
-    margin-top: 1rem;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.85rem;
-  }
-
-  .more a {
-    color: #666;
-    text-decoration: none;
-  }
-
-  .more a:hover {
-    color: #1a1a1a;
   }
 </style>
