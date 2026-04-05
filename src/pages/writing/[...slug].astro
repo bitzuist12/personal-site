@@ -26,6 +26,9 @@ function formatDate(dateStr: string) {
       <h1>{post.data.title}</h1>
       <p class="date">{formatDate(post.data.date)}</p>
     </header>
+    {post.data.image && (
+      <img class="hero" src={`${base.slice(0, -1)}${post.data.image}`} alt={post.data.title} />
+    )}
     <div class="prose">
       <Content />
     </div>
@@ -35,6 +38,12 @@ function formatDate(dateStr: string) {
 
 <style>
   header {
+    margin-bottom: 1.5rem;
+  }
+
+  .hero {
+    width: 100%;
+    border-radius: 8px;
     margin-bottom: 2rem;
   }
 
